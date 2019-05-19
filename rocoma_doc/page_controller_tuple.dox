@@ -1,0 +1,17 @@
+/*! \page page_controller_tuple Controller Tuples
+
+Controller tuples allow to chain multiple controllers and execute them in a given order.
+When one of the controllers returns false in a function, the whole controller fails and exits directly without computing the output of the other controllers.
+
+The controller tuples can take a variable number of controllers using variadic templates. However if you only use the plugin mechanism you will never use
+these types, because they are hidden in the export macro.
+\code{c}
+#include "roco/controllers/controllers.hpp"
+using MyControllerTuple = roco::ControllerTuple<my_model::State, my_model::Command, MyController1, MyController2, MyController3>
+\endcode
+\code{c}
+#include "roco_ros/controllers/controllers.hpp"
+using MyControllerTupleRos = roco_ros::ControllerTupleRos<my_model::State, my_model::Command, MyControllerRos1, MyControllerRos2>
+\endcode
+
+*/

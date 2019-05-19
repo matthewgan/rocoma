@@ -1,0 +1,16 @@
+/*! \page page_controller Controller
+
+Every controller that shall be managed by rocoma has to inherit from roco::Controller.
+\code{c}
+#include "roco/controllers/controllers.hpp"
+class MyController: virtual public roco::Controller<my_model::State, my_model::Command> {
+\endcode
+ - roco::Controller is a template, we have to specify the State and the Command class.
+ - virtual inheritance is used, this is necessary because the plugin mechanism introduces a diamond of death
+
+When inheriting from roco::Controller we additionally indirectly inherit from roco::ControllerAdapteeInterface and roco::ControllerExtensionInterface as well.
+The pure virtual interface of roco::ControllerAdapteeInterface has to be implemented by our controller and contains the core functionalities
+of a controller (initializing, advancing, stopping, etc.). The roco::ControllerExtensionInterface provides addtional functionality that rocoma implements for you.
+Such as adding workers, getting/setting controller time, and many more. These functionalities can be used in order to implement the adaptee interface.
+
+*/

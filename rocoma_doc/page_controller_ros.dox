@@ -1,0 +1,14 @@
+/*! \page page_controller_ros Controller Ros
+
+In order to access the ros functionalities the controller has to inherit from roco_ros::ControllerRos.
+\code{c}
+#include "roco_ros/controllers/controllers.hpp"
+class MyControllerRos: virtual public roco_ros::ControllerRos<my_model::State, my_model::Command> {
+\endcode
+
+The implementation requirements are identical to standard controllers. However, roco_ros::ControllerRos adds ros functionalities such as the getting/setting of the ros nodehandle.<BR>
+
+<B>Don't access the nodehandle in the constructor of your function. The namespace of the handle will be default and not what you expect.
+Register the ros communication in the create() function.</B>
+
+*/

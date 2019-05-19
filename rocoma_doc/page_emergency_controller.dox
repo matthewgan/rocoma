@@ -1,0 +1,15 @@
+/*! \page page_emergency_controller Emergency Controller
+
+Emergency controllers additionally inherit from roco::EmergencyControllerAdapteeInterface. This adds a fast initialization
+method that is needed when an emergency stop occurs.
+\code{c}
+#include "roco/controllers/controllers.hpp"
+class MyEmergencyController: virtual public roco::Controller<my_model::State, my_model::Command>, public roco::EmergencyControllerAdapteeInterface {
+\endcode
+
+In addition to the standard controller functions the following function has to be implemented.
+\code{c}
+ virtual bool initializeFast(double dt);
+\endcode
+
+*/

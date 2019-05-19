@@ -1,0 +1,21 @@
+/*! \page page_failproof_controller Failproof Controller
+
+Every failproof controller that shall be managed by rocoma has to inherit from roco::FailproofController.
+\code{c}
+#include "roco/controllers/controllers.hpp"
+class MyFailproofController: virtual public roco::FailproofController<my_model::State, my_model::Command> {
+\endcode
+
+A failproof controller has no access to roco::ControllerExtensionInterface, because failproof controllers should not add worker or the like.
+Failproof controllers can never fail and should not throw exceptions, since there is no possible way of handling them.
+Ideally the failproof controller only sets the commands to a certain shutoff/freeze mode. A failproof controller has to implement
+the roco::FailproofControllerAdapteeInterface.
+
+Thus following functions have to be implemented.
+\code{c}
+   virtual bool create(double dt);
+   virtual void advance(double dt);
+   virtual bool cleanup();
+\endcode
+
+*/

@@ -1,0 +1,14 @@
+/*! \page page_emergency_controller_ros Emergency Controller Ros
+
+In order to access the ros functionalities the controller has to inherit from roco_ros::ControllerRos.
+\code{c}
+#include "roco_ros/controllers/controllers.hpp"
+class MyEmergencyControllerRos: virtual public roco_ros::ControllerRos<my_model::State, my_model::Command>, public roco::EmergencyControllerAdapteeInterface {
+\endcode
+
+The implementation requirements are identical to emergency controllers. However, roco_ros::ControllerRos adds ros functionalities such as the getting/setting of the ros nodehandle.
+
+<B>Don't access the nodehandle in the constructor of your function. The namespace of the handle will be default and not what you expect.
+Register the ros communication in the create() function.</B>
+
+*/
